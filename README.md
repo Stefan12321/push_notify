@@ -26,15 +26,16 @@ This script is using either [Pushover](https://pushover.net/), the free [ntfy.sh
 
 * Pushover service is more secure, but it is a paid service. To utilize Pushover, you will need an account at Pushover to start. Please follow the link for registration detail. After you have registered, you'll receive your ***User key***. Then you have to create your ***API key*** for this script. 
 
-* ntfy.sh is a free service, and you can create any topic you like. Make sure the topic is unique enough to not receive other people's push notification. The topic is essentially your "password". I don't use private ntfy server because I don't deem a 3D printer notification such as out of filament or printing status to be something sensitive. To utilize ntfy.sh, you only need to pick up a topic, and match it to your phone and ***Topic*** entry at configuration file.
+* [ntfy.sh](https://ntfy.sh/) is a free service, and you can create any topic you like. Make sure the topic is unique enough to not receive other people's push notification. The topic is essentially your "password". I don't use private ntfy server because I don't deem a 3D printer notification such as out of filament or printing status to be something sensitive. To utilize ntfy.sh, you only need to pick up a topic, and match it to your phone and ***Topic*** entry at configuration file.
 
 * [Pushbullet](https://www.pushbullet.com/) ... "connects your devices, making them feel like one." To use Pushbullet you'll need to generate an ***Access Token*** for your Pushbullet user account to be used when implementing this script. This script currently only implements the "note" type of notification, allowing a title and a message to be sent for the push notification.
 
+* [gotify](https://gotify.net/) is a self-hosted push notification service
 ## Installation
 
 <ol><li>
 
-Download the source code of [notify.py](https://raw.githubusercontent.com/prd0000/push_notify/main/script/notify.py) if you want to use Pushover, or [fcm.py](https://raw.githubusercontent.com/prd0000/push_notify/main/script/fcm.py) if you want to use ntfy, or [pushbullet.py](https://raw.githubusercontent.com/prd0000/push_notify/main/script/pushbullet.py) if you want to use Pushbullet.
+Download the source code of [notify.py](https://raw.githubusercontent.com/prd0000/push_notify/main/script/notify.py) if you want to use Pushover, or [fcm.py](https://raw.githubusercontent.com/prd0000/push_notify/main/script/fcm.py) if you want to use ntfy, or [pushbullet.py](https://raw.githubusercontent.com/prd0000/push_notify/main/script/pushbullet.py) if you want to use Pushbullet, [gotify.py](https://raw.githubusercontent.com/prd0000/push_notify/main/script/gotify.py) if you want to use Gotify.
 
 <li> 
 
@@ -64,7 +65,14 @@ or
 [pushbullet]
 pb_access_token: <your access token>
 ```
-
+or
+```
+[gotify]
+token: <your application token>
+priority: <message priority (1 highest, 10 lowest)>
+server: <your server address without https://>
+disable_certificate_validation: <(default false) set this value to true if you use a self-signed SSL certificate>
+```
 <li>
 
 After you add the section to printer.cfg, do `FIRMWARE_RESTART` at Klipper. 
@@ -89,6 +97,10 @@ FCM_NOTIFY MSG=<message> [TITLE=<title>]
 PUSHBULLET_NOTIFY MSG=<message> TITLE=<title>
 ```
 
+```
+GOTIFY_NOTIFY MSG=<message> [TITLE=<title>]
+```
+
 
 * `MSG`: (mandatory) is the message that you are going to send to your phone.
 
@@ -111,6 +123,9 @@ FCM_NOTIFY TITLE="filename.gcode" MSG="printing done"
 ```
 ```
 PUSHBULLET_NOTIFY TITLE="Klipper" MSG="printing done"
+```
+```
+GOTIFY_NOTIFY TITLE="Bambulab P1S" MSG="printing done"
 ```
 <li>
 
