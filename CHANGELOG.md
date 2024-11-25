@@ -1,5 +1,8 @@
 # Change Log
 
+## 2024/11/25 - Release
+* Added Gotify push notification
+
 ## 2023/10/17 - Release
 * Added sound to PushOver (credits to [@Xierion](https://github.com/Xierion))
 
