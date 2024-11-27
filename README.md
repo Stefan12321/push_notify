@@ -22,7 +22,7 @@ Klipper is a open source 3D Printer firmware. If you want to install Klipper, yo
 ## What you need
 
 
-This script is using either [Pushover](https://pushover.net/), the free [ntfy.sh](https://ntfy.sh/), or [Pushbullet](https://www.pushbullet.com/) to send push notification to your phone. 
+This script is using either [Pushover](https://pushover.net/), the free [ntfy.sh](https://ntfy.sh/), or [Pushbullet](https://www.pushbullet.com/) or [gotify](https://gotify.net/) to send push notification to your phone. 
 
 * Pushover service is more secure, but it is a paid service. To utilize Pushover, you will need an account at Pushover to start. Please follow the link for registration detail. After you have registered, you'll receive your ***User key***. Then you have to create your ***API key*** for this script. 
 
